@@ -1,4 +1,4 @@
 # WiFi Frauder
-ESP32 WiFI Troller Frimware
+ESP32 WiFi Troller Firmware
 
 
