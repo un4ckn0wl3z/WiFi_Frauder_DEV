@@ -72,7 +72,7 @@ const char* menu_items[] = {"Random (Slow)", "Random (Fast)", "Custom SSID", "Ab
 int current_menu = 0;
 volatile bool menu_active = true;
 volatile bool spamming = false;
-String custom_ssids[64]; // Array for 64 SSIDs from wlist.txt
+String custom_ssids[64]; // Array for 64 SSIDs from funny_ssid_list.txt
 int custom_ssid_count = 0;
 const int num_ssids = 64; // Updated to 64 SSIDs for multi-SSID mode
 String ssids[64]; // Array for 64 random SSIDs
@@ -111,12 +111,12 @@ void setup() {
 
     // Read SSID list from file
     if (!readSSIDList()) {
-        Serial.println(F("Failed to read wlist.txt"));
+        Serial.println(F("Failed to read funny_ssid_list.txt"));
         display.clearDisplay();
         display.setTextSize(1);
         display.setTextColor(SSD1306_WHITE);
         display.setCursor(10, 20);
-        display.println(F("Failed to read wlist.txt"));
+        display.println(F("Failed to read funny_ssid_list.txt"));
         display.display();
         vTaskDelay(3000 / portTICK_PERIOD_MS);
     }

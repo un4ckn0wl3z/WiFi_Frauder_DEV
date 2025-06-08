@@ -2,9 +2,9 @@
 #include "main.h"
 
 bool readSSIDList() {
-    File file = SPIFFS.open("/wlist.txt", "r");
+    File file = SPIFFS.open("/funny_ssid_list.txt", "r");
     if (!file) {
-        Serial.println(F("Failed to open wlist.txt"));
+        Serial.println(F("Failed to open funny_ssid_list.txt"));
         return false;
     }
 
@@ -105,7 +105,7 @@ void spamCustomSSID(void *pvParameters) {
         display.setTextSize(1);
         display.setTextColor(SSD1306_WHITE);
         display.setCursor(10, 20);
-        display.println(F("No SSIDs in wlist.txt"));
+        display.println(F("No SSIDs in funny_ssid_list.txt"));
         display.display();
         vTaskDelay(2000 / portTICK_PERIOD_MS);
         spamming = false;
