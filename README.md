@@ -26,7 +26,7 @@
 
 ## 🛠️ Hardware
 
-- **Microcontroller**:ESP32 DevKitC 32E
+- **Microcontroller**: ESP32 DevKitC 32E (38 pins)
 - **Power**: USB or battery-powered
 - **Display**: SSD1306 0.96 I2C OLED
 
