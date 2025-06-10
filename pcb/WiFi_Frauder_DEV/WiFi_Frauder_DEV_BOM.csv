@@ -1,7 +1,7 @@
-"Reference","Qty","Value","DNP","Exclude from BOM","Exclude from Board","Footprint","Datasheet"
-"R1,R2,R3","3","2k","","","","Capacitor_SMD:C_0805_2012Metric","~"
-"SW1","1","BTN_DOWN","","","","Button_Switch_THT:SW_PUSH_6mm","~"
-"SW2","1","BTN_UP","","","","Button_Switch_THT:SW_PUSH_6mm","~"
-"SW3","1","BTN_ENTER","","","","Button_Switch_THT:SW_PUSH_6mm","~"
-"U1","1","ESP32-DevKitC","","","","PCM_Espressif:ESP32-DevKitC","https://docs.espressif.com/projects/esp-idf/zh_CN/latest/esp32/hw-reference/esp32/get-started-devkitc.html"
-"U2","1","DM-OLED096-636","","","","DM-OLED096-636:MODULE_DM-OLED096-636",""
+"Id";"Designator";"Footprint";"Quantity";"Designation";"Supplier and ref";
+1;"R2,R1,R3";"C_0805_2012Metric";3;"2k";;;
+2;"U2";"MODULE_DM-OLED096-636";1;"DM-OLED096-636";;;
+3;"SW2";"SW_PUSH_6mm";1;"BTN_UP";;;
+4;"SW3";"SW_PUSH_6mm";1;"BTN_ENTER";;;
+5;"U1";"ESP32-DevKitC";1;"ESP32-DevKitC";;;
+6;"SW1";"SW_PUSH_6mm";1;"BTN_DOWN";;;

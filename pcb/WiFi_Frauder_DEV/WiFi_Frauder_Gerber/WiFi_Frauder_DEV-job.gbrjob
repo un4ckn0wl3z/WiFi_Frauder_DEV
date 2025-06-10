@@ -5,13 +5,13 @@
       "Application": "Pcbnew",
       "Version": "9.0.2"
     },
-    "CreationDate": "2025-06-08T16:57:51+07:00"
+    "CreationDate": "2025-06-10T13:13:09+07:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
       "Name": "WiFi_Frauder_DEV",
       "GUID": "57694669-5f46-4726-9175-6465725f4445",
-      "Revision": "0"
+      "Revision": "1"
     },
     "Size": {
       "X": 93.45,
@@ -27,7 +27,9 @@
       "PadToPad": 0.2,
       "PadToTrack": 0.2,
       "TrackToTrack": 0.2,
-      "MinLineWidth": 0.4
+      "MinLineWidth": 0.2,
+      "TrackToRegion": 0.5,
+      "RegionToRegion": 0.5
     }
   ],
   "FilesAttributes": [
