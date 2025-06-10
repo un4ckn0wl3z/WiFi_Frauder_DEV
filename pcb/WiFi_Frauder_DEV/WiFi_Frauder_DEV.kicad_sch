@@ -1815,7 +1815,7 @@
 		)
 		(uuid "648a6ab0-c356-4ede-a18b-b02e3bc7b3e8")
 	)
-	(text "ssd1306 0.96 OED "
+	(text "ssd1306 0.96 OLED "
 		(exclude_from_sim no)
 		(at 45.466 75.184 0)
 		(effects
