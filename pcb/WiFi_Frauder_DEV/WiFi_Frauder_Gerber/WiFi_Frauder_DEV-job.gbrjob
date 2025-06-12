@@ -5,17 +5,17 @@
       "Application": "Pcbnew",
       "Version": "9.0.2"
     },
-    "CreationDate": "2025-06-10T13:13:09+07:00"
+    "CreationDate": "2025-06-12T23:09:37+07:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
       "Name": "WiFi_Frauder_DEV",
       "GUID": "57694669-5f46-4726-9175-6465725f4445",
-      "Revision": "1"
+      "Revision": "2"
     },
     "Size": {
-      "X": 93.45,
-      "Y": 64.55
+      "X": 67.55,
+      "Y": 95.65
     },
     "LayerNumber": 2,
     "BoardThickness": 1.6,
