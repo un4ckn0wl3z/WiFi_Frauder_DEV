@@ -20,11 +20,11 @@
 extern Adafruit_SSD1306 display;
 
 // Pin definitions
-#define SDA_PIN 21
-#define SCL_PIN 22
-#define BTN_DOWN 19
-#define BTN_UP 18
-#define BTN_ENTER 17
+#define SDA_PIN 16
+#define SCL_PIN 17
+#define BTN_DOWN 23
+#define BTN_UP 22
+#define BTN_ENTER 21
 
 // Devil logo
 extern const uint8_t DEVIL_LOGO[];
