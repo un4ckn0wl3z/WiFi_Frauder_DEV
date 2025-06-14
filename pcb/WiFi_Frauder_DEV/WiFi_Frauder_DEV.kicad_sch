@@ -6,8 +6,8 @@
 	(paper "A4")
 	(title_block
 		(title "WiFi Frauder DEV")
-		(date "2025-06-10")
-		(rev "1")
+		(date "2025-06-14")
+		(rev "2")
 		(company "By Anuwat Khongchuai (un4ckn0wl3z)")
 	)
 	(lib_symbols
@@ -1866,6 +1866,10 @@
 		(uuid "03421362-dd67-4aba-b854-e1bdb9aca3d2")
 	)
 	(no_connect
+		(at 175.26 106.68)
+		(uuid "0954856b-3a9a-4406-bb6a-d0254db73f05")
+	)
+	(no_connect
 		(at 109.22 83.82)
 		(uuid "22ee2f32-265a-4421-86a5-2389baa934a8")
 	)
@@ -1876,10 +1880,6 @@
 	(no_connect
 		(at 109.22 71.12)
 		(uuid "239b3225-6d9e-4fb1-a629-932c85ed5a7b")
-	)
-	(no_connect
-		(at 175.26 124.46)
-		(uuid "2a5c2e07-9907-4c7e-a791-4296f4b310b0")
 	)
 	(no_connect
 		(at 144.78 58.42)
@@ -1912,10 +1912,6 @@
 	(no_connect
 		(at 175.26 114.3)
 		(uuid "53c466fe-0930-44d8-9e26-d2dd1de80936")
-	)
-	(no_connect
-		(at 175.26 121.92)
-		(uuid "5f17fa56-9c9a-48a7-a260-030cb71e3369")
 	)
 	(no_connect
 		(at 175.26 111.76)
@@ -1962,6 +1958,10 @@
 		(uuid "dcd12685-1f95-476c-9594-bc5b34cf4cf2")
 	)
 	(no_connect
+		(at 175.26 109.22)
+		(uuid "e124ef1f-c142-45a7-a978-d9bf9405b971")
+	)
+	(no_connect
 		(at 175.26 119.38)
 		(uuid "e3fec814-dd57-48d5-ad7f-1f8aebb2aa4f")
 	)
@@ -2005,16 +2005,6 @@
 	)
 	(wire
 		(pts
-			(xy 175.26 106.68) (xy 184.15 106.68)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1664cfe6-fa87-4bee-9f13-42f824db4525")
-	)
-	(wire
-		(pts
 			(xy 214.63 85.09) (xy 223.52 85.09)
 		)
 		(stroke
@@ -2022,6 +2012,16 @@
 			(type default)
 		)
 		(uuid "1cde7006-4399-448b-93c0-7995bcd3dbd0")
+	)
+	(wire
+		(pts
+			(xy 185.42 121.92) (xy 175.26 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2d03a0c2-c7c4-4e57-8cc8-2fc7390e0d8e")
 	)
 	(wire
 		(pts
@@ -2145,16 +2145,6 @@
 	)
 	(wire
 		(pts
-			(xy 175.26 109.22) (xy 184.15 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a0bdabac-1e2a-4d87-b1bd-d53d1b6aa4cb")
-	)
-	(wire
-		(pts
 			(xy 252.73 58.42) (xy 267.97 58.42)
 		)
 		(stroke
@@ -2172,6 +2162,16 @@
 			(type default)
 		)
 		(uuid "ac05df9c-2000-4f84-b748-2559b7035a2a")
+	)
+	(wire
+		(pts
+			(xy 185.42 124.46) (xy 175.26 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b2c43fd4-2a2c-47bd-98f0-87a07b716316")
 	)
 	(wire
 		(pts
@@ -2333,16 +2333,6 @@
 		)
 		(uuid "19c14a45-e702-4268-89a1-893f6926e11f")
 	)
-	(label "OLED_SDA_NET"
-		(at 184.15 109.22 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "397f61bb-f6e9-4a63-9b18-9f6fcb7fdebd")
-	)
 	(label "BTN_DOWN_NET"
 		(at 213.36 58.42 0)
 		(effects
@@ -2352,16 +2342,6 @@
 			(justify left bottom)
 		)
 		(uuid "40ab5333-fc1a-4baf-99dd-f6c8a8aba369")
-	)
-	(label "OLED_SCL_NET"
-		(at 184.15 106.68 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "a02027eb-a353-4e83-bbba-55a8011dad97")
 	)
 	(label "OLED_SDA_NET"
 		(at 69.85 53.34 0)
@@ -2382,6 +2362,26 @@
 			(justify left bottom)
 		)
 		(uuid "afda2ffe-f399-4e79-8adb-76ba562de7b6")
+	)
+	(label "OLED_SDA_NET"
+		(at 185.42 121.92 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b8d7b6fc-77a5-439f-829d-196d9ab6a658")
+	)
+	(label "OLED_SCL_NET"
+		(at 185.42 124.46 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c442ab2c-d661-4732-8396-163c89cadce1")
 	)
 	(label "OLED_SCL_NET"
 		(at 69.85 50.8 0)
