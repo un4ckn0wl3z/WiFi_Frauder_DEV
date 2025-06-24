@@ -139,12 +139,12 @@ void setup() {
         ssids[i] = generateRandomSSID();
     }
 
+    // Show logo animation
+    displayLogoAnimation();
+
     // Start display task
     xTaskCreatePinnedToCore(
         displayTask, "DisplayTask", 4096, NULL, 1, &displayTaskHandle, 0);
-
-    // Show logo animation
-    displayLogoAnimation();
 }
 
 void loop() {

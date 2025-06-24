@@ -48,7 +48,6 @@ extern const int menu_item_count;
 
 // Function declarations
 void displayLogoAnimation();
-void displayMenu();
 String generateRandomSSID();
 void spamRandomSSIDSlow(void *pvParameters);
 void spamCustomSSID(void *pvParameters);

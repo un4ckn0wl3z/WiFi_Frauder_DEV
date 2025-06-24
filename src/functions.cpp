@@ -38,25 +38,7 @@ void displayLogoAnimation() {
     display.clearDisplay();
     display.drawBitmap(0, 0, DEVIL_LOGO, 128, 64, SSD1306_WHITE);
     display.display();
-    vTaskDelay(1000 / portTICK_PERIOD_MS);
-}
-
-void displayMenu() {
-    display.clearDisplay();
-    display.setTextSize(1);
-    display.setTextColor(SSD1306_WHITE);
-    display.setCursor(20, 0);
-    display.println(F("WiFi Frauder"));
-    for (int i = 0; i < 4; i++) {
-        display.setCursor(10, 20 + i * 10);
-        if (i == current_menu) {
-            display.print(F("> "));
-        } else {
-            display.print(F("  "));
-        }
-        display.println(menu_items[i]);
-    }
-    display.display();
+    vTaskDelay(2000 / portTICK_PERIOD_MS);
 }
 
 String generateRandomSSID() {
