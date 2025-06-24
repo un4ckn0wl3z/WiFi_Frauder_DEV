@@ -6,6 +6,7 @@
 
 ## 🟩 PCB Overview
 
+![rev3_pcb_assembly](screenshot/rev3_pcb_assembly.jpeg)
 ![3d](screenshot/3d.png)
 ![pcb](screenshot/pcb.png)
 ![schema](screenshot/schema.png)
