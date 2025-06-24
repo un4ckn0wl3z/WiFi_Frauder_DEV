@@ -69,9 +69,9 @@ const uint8_t DEVIL_LOGO[] PROGMEM = {
 
 // Menu and state variables
 const char* menu_items[] = {
-    "Random (Slow)", 
-    "Random (Fast)", 
-    "Custom SSID", 
+    "Random WIFI (Slow)", 
+    "Random WIFI (Fast)", 
+    "Custom WIFI SSID", 
     "About", 
 };
 
