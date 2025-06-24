@@ -172,12 +172,12 @@ void loop() {
         if (digitalRead(BTN_ENTER) == HIGH && (millis() - lastDebounceTime) > debounceDelay) {
             menu_active = false;
             // Handle menu selection
-            if (menu_items[current_menu] == "Random (Slow)") {
-                xTaskCreatePinnedToCore(spamRandomSSIDSlow, "spamRandomSSIDSlow", 4096, NULL, 2, &wifiTaskHandle, 1);
-            } else if (menu_items[current_menu] == "Random (Fast)") {
-                xTaskCreatePinnedToCore(spamRandomSSIDFast, "spamRandomSSIDFast", 4096, NULL, 2, &wifiTaskHandle, 1);
-            } else if (menu_items[current_menu] == "Custom SSID") {
-                xTaskCreatePinnedToCore(spamCustomSSID, "spamCustomSSID", 4096, NULL, 2, &wifiTaskHandle, 1);
+            if (menu_items[current_menu] == "Random WIFI (Slow)") {
+                xTaskCreatePinnedToCore(spamRandomSSIDSlow, "Random WIFI (Slow) Task", 4096, NULL, 2, &wifiTaskHandle, 1);
+            } else if (menu_items[current_menu] == "Random WIFI (Fast)") {
+                xTaskCreatePinnedToCore(spamRandomSSIDFast, "Random WIFI (Fast) Task", 4096, NULL, 2, &wifiTaskHandle, 1);
+            } else if (menu_items[current_menu] == "Custom WIFI SSID") {
+                xTaskCreatePinnedToCore(spamCustomSSID, "Custom WIFI SSID Task", 4096, NULL, 2, &wifiTaskHandle, 1);
             } else if (menu_items[current_menu] == "About") {
                 display.clearDisplay();
                 display.setTextSize(1);
@@ -191,7 +191,20 @@ void loop() {
                 display.display();
                 vTaskDelay(3000 / portTICK_PERIOD_MS);
                 menu_active = true;
-            } 
+            } else {
+                display.clearDisplay();
+                display.setTextSize(1);
+                display.setTextColor(SSD1306_WHITE);
+                display.setCursor(20, 20);
+                display.println(F("Error:"));
+                display.setCursor(20, 30);
+                display.println(F("Something wrong"));
+                display.setCursor(20, 40);
+                display.println(F("!!!!!!!!!!"));
+                display.display();
+                vTaskDelay(3000 / portTICK_PERIOD_MS);
+                menu_active = true;
+            }
             lastDebounceTime = millis();
         }
     } else {
