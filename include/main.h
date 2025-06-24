@@ -12,6 +12,7 @@
 #include <freertos/task.h>
 #include <FS.h>
 #include <SPIFFS.h>
+#include <ELECHOUSE_CC1101_SRC_DRV.h>
 
 // OLED configuration
 #define SCREEN_WIDTH 128
@@ -34,6 +35,8 @@ extern const char* menu_items[];
 extern int current_menu;
 extern volatile bool menu_active;
 extern volatile bool spamming;
+extern volatile bool cc1101443jamming;
+
 extern String custom_ssids[];
 extern int custom_ssid_count;
 extern const int num_ssids;
@@ -53,6 +56,7 @@ void spamRandomSSIDSlow(void *pvParameters);
 void spamCustomSSID(void *pvParameters);
 void spamRandomSSIDFast(void *pvParameters);
 void displayTask(void *pvParameters);
+void cc1101Jammer(void *pvParameters);
 bool readSSIDList();
 
 #endif

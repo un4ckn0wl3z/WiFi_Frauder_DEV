@@ -71,24 +71,28 @@ const uint8_t DEVIL_LOGO[] PROGMEM = {
 const char* menu_items[] = {
     "Random WIFI (Slow)", 
     "Random WIFI (Fast)", 
-    "Custom WIFI SSID", 
-    "About", 
+    "Custom WIFI SSID",
+    "443 Jammer",
+    "About"
 };
 
 
 volatile bool menu_active = true;
 volatile bool spamming = false;
+volatile bool cc1101443jamming = false;
 String custom_ssids[64]; // Array for 64 SSIDs from funny_ssid_list.txt
 int custom_ssid_count = 0;
 const int num_ssids = 64; // Updated to 64 SSIDs for multi-SSID mode
 String ssids[64]; // Array for 64 random SSIDs
 TaskHandle_t displayTaskHandle = NULL;
 TaskHandle_t wifiTaskHandle = NULL;
+TaskHandle_t cc1101443Handle = NULL;
 
-int current_menu = 0;
+
+const int menu_item_count = 5; // Total number of menu items
+int current_menu = 0; // Currently selected menu index
 int display_start = 0; // Index of first item to display
 const int max_display_items = 4; // Number of items to show at once
-const int menu_item_count = 4; // Total number of menu items
 // Debounce variables
 unsigned long lastDebounceTime = 0;
 const unsigned long debounceDelay = 300;
@@ -178,6 +182,8 @@ void loop() {
                 xTaskCreatePinnedToCore(spamRandomSSIDFast, "Random WIFI (Fast) Task", 4096, NULL, 2, &wifiTaskHandle, 1);
             } else if (menu_items[current_menu] == "Custom WIFI SSID") {
                 xTaskCreatePinnedToCore(spamCustomSSID, "Custom WIFI SSID Task", 4096, NULL, 2, &wifiTaskHandle, 1);
+            } else if (menu_items[current_menu] == "443 Jammer") {
+                xTaskCreatePinnedToCore(cc1101Jammer, "443 Jammer Task", 4096, NULL, 2, &cc1101443Handle, 1);
             } else if (menu_items[current_menu] == "About") {
                 display.clearDisplay();
                 display.setTextSize(1);
@@ -210,11 +216,18 @@ void loop() {
     } else {
         if (digitalRead(BTN_DOWN) == HIGH && digitalRead(BTN_UP) == HIGH && (millis() - lastDebounceTime) > debounceDelay) {
             spamming = false;
+            cc1101443jamming = false;
             WiFi.softAPdisconnect(true);
             if (wifiTaskHandle != NULL) {
                 vTaskDelete(wifiTaskHandle);
                 wifiTaskHandle = NULL;
             }
+
+            if (cc1101443Handle != NULL) {
+                vTaskDelete(cc1101443Handle);
+                cc1101443Handle = NULL;
+            }            
+
             menu_active = true;
             lastDebounceTime = millis();
         }
