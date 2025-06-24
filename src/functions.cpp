@@ -68,15 +68,48 @@ String generateRandomSSID() {
     return ssid;
 }
 
+// Updated displayTask to handle scrolling
 void displayTask(void *pvParameters) {
-    while (true) {
-        if (menu_active && !spamming) {
-            displayMenu();
+    while (1) {
+        if (menu_active) {
+            display.clearDisplay();
+            display.setTextSize(1);
+            display.setTextColor(SSD1306_WHITE);
+
+            // Display up to max_display_items menu items
+            for (int i = 0; i < max_display_items; i++) {
+                int menu_index = display_start + i;
+                if (menu_index >= menu_item_count) break; // Stop if we reach the end of the menu
+
+                // Highlight the selected item
+                if (menu_index == current_menu) {
+                    display.setTextColor(SSD1306_BLACK, SSD1306_WHITE); // Inverted for highlight
+                    display.setCursor(0, 10 + i * 12);
+                    display.print("> ");
+                    display.println(menu_items[menu_index]);
+                    display.setTextColor(SSD1306_WHITE); // Reset to normal
+                } else {
+                    display.setCursor(0, 10 + i * 12);
+                    display.print("  ");
+                    display.println(menu_items[menu_index]);
+                }
+            }
+
+            // Optional: Add scroll indicators
+            if (display_start > 0) {
+                display.setCursor(120, 0);
+                display.print("^"); // Up arrow
+            }
+            if (display_start + max_display_items < menu_item_count) {
+                display.setCursor(120, 56);
+                display.print("v"); // Down arrow
+            }
+
+            display.display();
         }
-        vTaskDelay(100 / portTICK_PERIOD_MS);
+        vTaskDelay(100 / portTICK_PERIOD_MS); // Update every 100ms
     }
 }
-
 void spamRandomSSIDSlow(void *pvParameters) {
     spamming = true;
     WiFi.softAP("InitialSSID"); // Initialize AP

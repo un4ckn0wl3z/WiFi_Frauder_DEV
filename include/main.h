@@ -41,6 +41,11 @@ extern String ssids[];
 extern TaskHandle_t displayTaskHandle;
 extern TaskHandle_t wifiTaskHandle;
 
+extern int current_menu;
+extern int display_start;
+extern const int max_display_items;
+extern const int menu_item_count;
+
 // Function declarations
 void displayLogoAnimation();
 void displayMenu();

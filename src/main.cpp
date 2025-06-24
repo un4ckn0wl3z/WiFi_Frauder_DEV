@@ -68,8 +68,14 @@ const uint8_t DEVIL_LOGO[] PROGMEM = {
 };
 
 // Menu and state variables
-const char* menu_items[] = {"Random (Slow)", "Random (Fast)", "Custom SSID", "About"};
-int current_menu = 0;
+const char* menu_items[] = {
+    "Random (Slow)", 
+    "Random (Fast)", 
+    "Custom SSID", 
+    "About", 
+};
+
+
 volatile bool menu_active = true;
 volatile bool spamming = false;
 String custom_ssids[64]; // Array for 64 SSIDs from funny_ssid_list.txt
@@ -79,6 +85,10 @@ String ssids[64]; // Array for 64 random SSIDs
 TaskHandle_t displayTaskHandle = NULL;
 TaskHandle_t wifiTaskHandle = NULL;
 
+int current_menu = 0;
+int display_start = 0; // Index of first item to display
+const int max_display_items = 4; // Number of items to show at once
+const int menu_item_count = 4; // Total number of menu items
 // Debounce variables
 unsigned long lastDebounceTime = 0;
 const unsigned long debounceDelay = 300;
@@ -140,15 +150,28 @@ void setup() {
 void loop() {
     if (menu_active) {
         if (digitalRead(BTN_DOWN) == HIGH && (millis() - lastDebounceTime) > debounceDelay) {
-            current_menu = (current_menu + 1) % 4;
+            current_menu = (current_menu + 1) % menu_item_count; // Updated for new item count
+            // Adjust display_start to keep selected item in view
+            if (current_menu >= display_start + max_display_items) {
+                display_start = current_menu - max_display_items + 1;
+            } else if (current_menu < display_start) {
+                display_start = current_menu;
+            }
             lastDebounceTime = millis();
         }
         if (digitalRead(BTN_UP) == HIGH && (millis() - lastDebounceTime) > debounceDelay) {
-            current_menu = (current_menu - 1 + 4) % 4;
+            current_menu = (current_menu - 1 + menu_item_count) % menu_item_count; // Updated for new item count
+            // Adjust display_start to keep selected item in view
+            if (current_menu < display_start) {
+                display_start = current_menu;
+            } else if (current_menu >= display_start + max_display_items) {
+                display_start = current_menu - max_display_items + 1;
+            }
             lastDebounceTime = millis();
         }
         if (digitalRead(BTN_ENTER) == HIGH && (millis() - lastDebounceTime) > debounceDelay) {
             menu_active = false;
+            // Handle menu selection
             if (menu_items[current_menu] == "Random (Slow)") {
                 xTaskCreatePinnedToCore(spamRandomSSIDSlow, "spamRandomSSIDSlow", 4096, NULL, 2, &wifiTaskHandle, 1);
             } else if (menu_items[current_menu] == "Random (Fast)") {
@@ -168,7 +191,7 @@ void loop() {
                 display.display();
                 vTaskDelay(3000 / portTICK_PERIOD_MS);
                 menu_active = true;
-            }
+            } 
             lastDebounceTime = millis();
         }
     } else {
